@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Afnan | Web Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --light-bg: #f8fafc;
+      --dark-bg: #0f172a;
+      --light-text: #1f2937;
+      --dark-text: #f8fafc;
+      --accent: #1e3a8a;
+      --accent2: #0ea5e9;
+    }
+
+    * {box-sizing: border-box;margin: 0;padding: 0;}
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(180deg, var(--light-bg), #e2e8f0);
+      color: var(--light-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark {
+      background: linear-gradient(180deg, var(--dark-bg), #1e293b);
+      color: var(--dark-text);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      z-index: 999;
+    }
+
+    /* NAVBAR */
+    nav {
+      margin-top: 3.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: 0.3s;
+    }
+    nav a:hover::after {width: 100%;}
+
+    /* HERO */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .image-wrapper {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .image-wrapper img {width: 100%;display: block;}
+    .info {max-width: 600px;}
+    .info h1 {font-size: 1.8rem;font-weight: 800;margin: 1rem 0;}
+    .info p {font-size: 1rem;line-height: 1.6;margin-bottom: 1.5rem;padding: 0 1rem;}
+    .buttons {display: flex;justify-content: center;flex-wrap: wrap;gap: 1rem;}
+    .buttons a {
+      text-decoration: none;background: var(--accent);color: white;
+      padding: 0.6rem 1.2rem;border-radius: 0.5rem;font-weight: 600;
+      transition: transform 0.2s, background 0.3s;
+      font-size: 0.95rem;
+    }
+    .buttons a:hover {background: #2563eb;transform: scale(1.05);}
+
+    /* ABOUT SECTION */
+    section {
+      padding: 2.5rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+    }
+    .about p {
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: auto;
+      padding: 0 0.5rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .skill {
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .skill:hover {transform: translateY(-5px);}
+    .skill i {font-size: 1.8rem;color: var(--accent2);margin-bottom: 0.5rem;}
+    .skill h3 {margin-bottom: 0.5rem;font-size: 1rem;}
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .service {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .service:hover {transform: scale(1.05);}
+    .service i {font-size: 1.6rem;margin-bottom: 0.5rem;}
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      background: rgba(0, 0, 0, 0.05);
+    }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
+    .socials a {
+      color: var(--accent);
+      transition: transform 0.3s, color 0.3s;
+    }
+    .socials a:hover {color: #0ea5e9;transform: scale(1.2);}
+
+    /* Larger screens */
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+      }
+      .info {padding-left: 2rem;}
+      .info h1 {font-size: 2.5rem;}
+      .info p {font-size: 1.1rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="container">
+    <div class="image-wrapper" id="image">
+      <img src="images/DSC_0057.JPG" alt="Afnan's Profile Image">
+    </div>
+    <div class="info" id="text">
+      <h1>Hello, I'm Afnan</h1>
+      <p>I design and develop stunning websites with clean code, elegant layouts, and unforgettable user experiences. Let me bring your next idea to life — with beauty and purpose.</p>
+      <div class="buttons">
+        <a href="projects.html">View Projects</a>
+        <a href="contact.html">Hire Me</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Me -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Afnan, a passionate web designer & developer from Pakistan. I love transforming ideas into visually stunning and functional websites. 
+      I enjoy solving problems, learning new technologies, and creating digital products that make an impact.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">
+        <i class="fab fa-html5"></i>
+        <h3>HTML & CSS</h3>
+        <p>Building responsive, semantic, and modern layouts.</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-js"></i>
+        <h3>JavaScript</h3>
+        <p>Interactive websites with animations & functionality.</p>
+      </div>
+      <div class="skill">
+        <i class="fab fa-react"></i>
+        <h3>React</h3>
+        <p>Developing scalable front-end applications.</p>
+      </div>
+      <div class="skill">
+        <i class="fas fa-paint-brush"></i>
+        <h3>UI/UX Design</h3>
+        <p>Designing user-friendly and elegant interfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <h2>Services I Offer</h2>
+    <div class="services">
+      <div class="service">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Web Development</h3>
+        <p>Custom websites tailored to your business needs.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Responsive Design</h3>
+        <p>Mobile-first layouts that adapt to all devices.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-lightbulb"></i>
+        <h3>Creative Branding</h3>
+        <p>Logos, brand identities, and design concepts that stand out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Afnan | Web Designer — Connect with me
+    <div class="socials">
+      <a href="https://instagram.com/noyours1416" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@sad.forlife1" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+    ScrollReveal().reveal('#image',{origin:'left',distance:'50px',duration:800,delay:200});
+    ScrollReveal().reveal('#text',{origin:'right',distance:'50px',duration:800,delay:400});
+    ScrollReveal().reveal('.skill',{interval:200});
+    ScrollReveal().reveal('.service',{interval:200});
+  </script>
+</body>
+</html>

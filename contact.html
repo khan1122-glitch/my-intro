@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Afnan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --text-color: #1f2937;
+      --nav-color: #1e3a8a;
+      --card-bg: #ffffff;
+      --shadow-color: rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-color: #e2e8f0;
+      --nav-color: #60a5fa;
+      --card-bg: #1e293b;
+      --shadow-color: rgba(255,255,255,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--nav-color);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--nav-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 100;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: var(--nav-color);
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-color);
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+
+    button[type="submit"] {
+      background: var(--nav-color);
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background: var(--text-color);
+      color: var(--bg-color);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+
+    .socials {
+  margin-top: 1rem;
+}
+
+.socials a {
+  margin: 0 0.4rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem; /* Smaller size */
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.socials a:hover {
+  color: var(--nav-color);
+  transform: scale(1.2);
+}
+
+
+    /* 🔍 Mobile adjustments */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      nav {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      form {
+        padding: 1.5rem;
+      }
+      button[type="submit"] {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h1>Contact Me</h1>
+
+  <form action="https://formbold.com/s/YOUR_FORMBOLD_FORM_ID" method="POST" class="contact-form">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+<!-- Keep all your existing HTML and styles -->
+
+<!-- Replace the <footer> section with this: -->
+    <footer>
+        &copy; 2025 Afnan | Web Designer
+        <div class="socials">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </footer>
+      
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    ScrollReveal().reveal('.contact-form', {
+      delay: 300,
+      distance: '40px',
+      origin: 'bottom',
+      easing: 'ease-in-out',
+      duration: 800,
+      reset: false
+    });
+
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+    }
+  </script>
+
+</body>
+</html>

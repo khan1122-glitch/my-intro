@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects | Afnan</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --text-color: #1f2937;
+      --nav-color: #1e3a8a;
+      --card-bg: #ffffff;
+      --shadow-color: rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-color: #e2e8f0;
+      --nav-color: #60a5fa;
+      --card-bg: #1e293b;
+      --shadow-color: rgba(255,255,255,0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 2rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--nav-color);
+      font-weight: 600;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--nav-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--nav-color);
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    #searchInput {
+      padding: 0.7rem 1.2rem;
+      border: 2px solid var(--nav-color);
+      border-radius: 999px;
+      width: 90%;
+      max-width: 400px;
+      font-size: 1rem;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      outline: none;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      z-index: 2;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-grid:hover .project-card:not(:hover) {
+      transform: scale(0.95);
+      filter: blur(1px);
+      opacity: 0.8;
+    }
+
+    .project-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+
+    .project-img {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .view-project-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .view-project-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #2563eb, #7e22ce);
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2rem; }
+      .theme-toggle { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+      .view-project-btn { font-size: 0.9rem; padding: 0.5rem 1.2rem; }
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      background: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h1>My Projects</h1>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="🔍 Search projects...">
+  </div>
+
+  <!-- Project Grid -->
+  <section class="project-grid" id="projectGrid">
+    <div class="project-card">
+      <h2>Proposal Website</h2>
+      <p>A romantic and interactive proposal-themed website designed to express emotions with clean sections, smooth scroll, and animation triggers.</p>
+      <img src="images/1.2.jpeg" alt="Proposal Website" class="project-img">
+      <a href="https://effortless-haupia-4bf2d0.netlify.app/" target="_blank" class="view-project-btn">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h2>Motorcycle Workshop</h2>
+      <p>A bold, powerful UI for a motorcycle repair shop with glowing hover transitions and strong typography reflecting speed and precision.</p>
+      <img src="images/2.2.jpeg" alt="Motorcycle Workshop" class="project-img">
+      <a href="https://6858c09c9e5549ddd36d37df--lovely-gelato-1190fc.netlify.app/" target="_blank" class="view-project-btn">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h2>Coffee Shop</h2>
+      <p>Elegant design with a cozy atmosphere, perfect for showcasing a coffee shop menu, featuring animations and modern login/signup UX.</p>
+      <img src="images/coffee.jpeg" alt="Coffee Shop Website" class="project-img">
+      <a href="https://afnan-ktk-coffee-point.netlify.app/login" target="_blank" class="view-project-btn">View Project</a>
+    </div>
+
+    <!-- NEW SCHOOL PROJECT -->
+    <div class="project-card">
+      <h2>My School Website</h2>
+      <p>A fully responsive school website with events, teachers, admissions, and modern UI, designed to showcase excellence in education.</p>
+      <img src="images/schoool.jpeg" alt="School Website" class="project-img">
+      <a href="https://khan1122-glitch.github.io/my-school/" target="_blank" class="view-project-btn">View Project</a>
+    </div>
+  </section>  
+
+  <footer>
+    &copy; 2025 Afnan | Web Designer — Connect with me 
+    <div class="socials">
+      <a href="https://instagram.com/noyours1416" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://tiktok.com/@sad.forlife1" target="_blank" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+  </footer>
+      
+  <!-- Scripts -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    ScrollReveal().reveal('.project-card', {
+      delay: 200,
+      distance: '40px',
+      origin: 'bottom',
+      easing: 'ease-in-out',
+      duration: 800,
+      reset: false
+    });
+
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute("data-theme");
+      body.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+
+    // Search Filter Logic
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".project-card");
+
+    searchInput.addEventListener("input", function () {
+      const value = this.value.toLowerCase();
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(value) ? "block" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
